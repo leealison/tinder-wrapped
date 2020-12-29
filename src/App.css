@@ -1,38 +1,77 @@
-.App {
+body {
+  background-image: linear-gradient(to right, #FE4F68 , #FF7353);
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.card {
+  width: 35em;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  padding-top: 2em;
+}
+
+.card-title {
+  font-size: 3em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  padding-top: 15%;
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 7vh;
+  color: #3B01E2;
+}
+
+.card-text {
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  padding: 20%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 3.7vh;
+  color: #ffffff;
+}
+
+/* https://codepen.io/valentingalmand/pen/MYMZZK */
+.button-container {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  outline: none;
+  height: 40px;
+  text-align: center;
+  width: 30vh;
+  border-radius: 40px;
+  background: #ffffff;
+  border: 0px solid #ffffff;
+  color: #3B01E2;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+button:hover {
   color: white;
+  background: #3B01E2;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.title-text {
+  font-family: 'Montserrat', sans-serif;
 }
