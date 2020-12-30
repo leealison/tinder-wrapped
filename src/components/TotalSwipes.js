@@ -1,7 +1,8 @@
 import * as reader from "../readData.js";
 import { useRef, useEffect, useState } from "react";
-import { Pie } from "react-chartjs-2";
 import { TweenMax, Power3 } from "gsap";
+import PieChart from "./PieChart.js";
+import { useSpring, animated } from "react-spring";
 
 function TotalSwipes(props) {
   const [show, setShow] = useState(false);
@@ -28,57 +29,39 @@ function TotalSwipes(props) {
   const json = JSON.parse(props.data);
   const swipes = reader.getTotalSwipes(json["Usage"]);
 
-  const state = {
-    labels: ["Likes", "Passes"],
-    datasets: [
-      {
-        label: 'Rainfall',
-        backgroundColor: [
-          '#485696',
-          '#9381FF',
-        ],
-        borderWidth: 0,
-        hoverBackgroundColor: [
-          '#CB1581',
-          '#CB1581',
-        ],
-        data: [swipes.swipeLikes, swipes.swipePasses]
-      }
-    ]
-  }
+  const calc = (x, y) =>
+    [-(y - window.innerHeight / 2) / 20,
+    (x - window.innerWidth / 2) / 20, 1.1];
+  const trans = (x, y) =>
+    `perspective(600px) rotateX(${x}deg) rotateY(${y}deg)`;
+  const [p, setP] = useSpring(() =>
+    ({
+      xys: [0, 0, 1],
+      config: { mass: 1, tension: 40, friction: 30 }
+    }));
 
   if (show) {
     return (
       <div className="transition-1">
-        <div className="total-content">
-          <div className="total-text"
-            ref={item => { line1 = item }}>
-            Total number of swipes:
+        <animated.div
+          onMouseMove={({ clientX: x, clientY: y }) => setP({ xys: calc(x, y) })}
+          onMouseLeave={() => setP({ xys: [0, 0, 1] })}
+          style={{ transform: p.xys.interpolate(trans) }}>
+          <div className="total-content">
+            <div className="total-text"
+              ref={item => { line1 = item }}>
+              Total number of swipes:
           </div>
-          <div className="total-text"
-            ref={item => { line2 = item }}
-            style={{ "color": "black" }}>
-            {swipes.swipeLikes + swipes.swipePasses}
+            <div className="total-text"
+              ref={item => { line2 = item }}
+              style={{ "color": "black" }}>
+              {swipes.swipeLikes + swipes.swipePasses}
+            </div>
+            <PieChart swipeLikes={swipes.swipeLikes} swipePasses={swipes.swipePasses} />
           </div>
-          <div style={{"paddingTop": "15%" }}>
-            {setTimeout(() => <Pie
-              data={state}
-              options={{
-                legend: {
-                  display: true,
-                  position: 'right',
-                  labels: {
-                    fontFamily: 'Montserrat',
-                    fontColor: "#CB1581"
-                  }
-                },
-
-              }}
-            />, 1000)}
-
-          </div>
-        </div>
+        </animated.div>
       </div>
+
     );
   } else return null;
 }
