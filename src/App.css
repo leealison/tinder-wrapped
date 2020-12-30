@@ -76,8 +76,13 @@ button:hover {
   font-family: 'Montserrat', sans-serif;
   opacity: 0;
   color: #CB1581;
-  font-size: 5vh;
+  font-size: 8vh;
   font-weight: bold;
+}
+
+.total-content {
+  margin: auto;
+  width: 50%;
 }
 
 .transition-1 {
@@ -87,7 +92,8 @@ button:hover {
   left: 0;
   top: 0;
   animation: color-animation-1 linear 1s;
-  animation-fill-mode: forwards;;
+  animation-fill-mode: forwards;
+
 }
 
 @keyframes color-animation-1 {
