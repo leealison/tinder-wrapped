@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Transition } from "react-transition-group";
 import TitleCard from "./components/TitleCard.js";
 import TotalSwipes from "./components/TotalSwipes.js";
-import { TweenMax } from "gsap";
 import "./App.css";
 
 function App() {
@@ -23,15 +22,15 @@ function App() {
         timeout={1000}
         mountOnEnter
         unmountOnExit
-        in={title}>
-        <TitleCard data={update}/>
+        in={title} >
+        <TitleCard data={update} />
       </Transition>
       <Transition
         timeout={1000}
         mountOnEnter
         unmountOnExit
         in={jsonSet}>
-        <TotalSwipes data={json}/>
+        <TotalSwipes data={json} />
       </Transition>
     </div>
   );

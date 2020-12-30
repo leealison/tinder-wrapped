@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(to right, #FE4F68 , #FF7353);
+  background-color: #FF7353
 }
 
 #root {
@@ -72,6 +72,25 @@ button:hover {
   background: #3B01E2;
 }
 
-.title-text {
+.total-text {
   font-family: 'Montserrat', sans-serif;
+  opacity: 0;
+  color: #CB1581;
+  font-size: 5vh;
+  font-weight: bold;
+}
+
+.transition-1 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  animation: color-animation-1 linear 1s;
+  animation-fill-mode: forwards;;
+}
+
+@keyframes color-animation-1 {
+  0%{background-color: #FF7353}
+  100%{background-color: #A5FFEF}
 }

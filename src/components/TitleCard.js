@@ -1,6 +1,6 @@
 import { useSpring, animated } from "react-spring";
 import { useRef, useEffect } from "react";
-import { TweenMax, Power3 } from "gsap";
+import { TweenMax } from "gsap";
 
 function TitleCard(props) {
   //https://codesandbox.io/embed/rj998k4vmm
@@ -25,11 +25,7 @@ function TitleCard(props) {
         TweenMax.to(
           content,
           1,
-          {
-            opacity: 0,
-            x: 150,
-            ease: Power3.easeOut
-          }
+          { opacity: 0, x: 150 }
         );
         props.data("title", false);
         props.data("json", e.target.result);
@@ -42,12 +38,8 @@ function TitleCard(props) {
   useEffect(() => {
     TweenMax.to(
       content,
-      4.5,
-      {
-        opacity: 1,
-        y: -20,
-        ease: Power3.easeOut
-      }
+      3.5,
+      { opacity: 1, y: -20 }
     );
   }, []);
 
