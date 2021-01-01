@@ -16,4 +16,13 @@ function getTotalSwipes(data) {
   };
 }
 
-export { getTotalSwipes }
+function getTotalMatches(data) {
+  const matches = Object.values(data["matches"]);
+  let matchesNum = 0;
+  for (let i = 0; i < matches.length; i++) {
+    matchesNum += matches[i];
+  }
+  return matchesNum;
+}
+
+export { getTotalSwipes, getTotalMatches }

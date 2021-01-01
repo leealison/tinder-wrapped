@@ -52,7 +52,7 @@ function TitleCard(props) {
         <div className="card">
           <div className="card-title">Tinder Wrapped</div>
           <div className="card-text" style={{ "paddingTop": "10vh", "marginBottom": "-5vh" }}>
-            You've been busy swiping! Here are your Tinder highlights.
+            Here are your Tinder highlights blah blah blah
           </div>
           <div className="button-container">
             <input id="fileButton" type="file" hidden />

@@ -1,19 +1,16 @@
-import { getTotalSwipes } from "../readData.js";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { TweenMax, Power3 } from "gsap";
-import PieChart from "./PieChart.js";
+import { getTotalMatches } from "../readData.js";
 import { useSpring, animated } from "react-spring";
 import Next from "./Next.js";
 
-function TotalSwipes(props) {
+function TotalMatches(props) {
   const [show, setShow] = useState(false);
   let line1 = useRef(null);
   let line2 = useRef(null);
-  let pie = useRef(null);
 
   useEffect(() => {
     if (show) {
-      document.body.style.background = "#A5FFEF";
       TweenMax.to([line1, line2], .8, {
         delay: .8,
         y: 64,
@@ -23,13 +20,14 @@ function TotalSwipes(props) {
           amount: .15
         }
       });
+
     } else {
       setTimeout(() => setShow(true), 900);
     }
   }, [show, line1, line2]);
 
   const json = JSON.parse(props.data);
-  const swipes = getTotalSwipes(json["Usage"]);
+  const matches = getTotalMatches(json["Usage"]);
 
   const calc = (x, y) =>
     [-(y - window.innerHeight / 2) / 20,
@@ -42,45 +40,31 @@ function TotalSwipes(props) {
       config: { mass: 1, tension: 40, friction: 30 }
     }));
 
-  const animateOut = () => {
-    TweenMax.to([line1, line2, pie], .8, {
-      y: -30,
-      opacity: 0,
-      ease: Power3.easeOut,
-      stagger: {
-        amount: .15
-      }
-    });
-  }
-
   if (show) {
     return (
       <div>
-        <div className="transition-1">
+        <div className="transition-2">
           <animated.div
             onMouseMove={({ clientX: x, clientY: y }) => setP({ xys: calc(x, y) })}
             onMouseLeave={() => setP({ xys: [0, 0, 1] })}
             style={{ transform: p.xys.interpolate(trans) }}>
             <div className="total-content">
-              <div className="total-text"
+              <div className="matches-text"
                 ref={item => { line1 = item }}>
-                Total number of swipes:
-              </div>
-              <div className="total-text"
+                Total number of matches:
+          </div>
+              <div className="matches-text"
                 ref={item => { line2 = item }}
-                style={{ "color": "black", "paddingBottom": "1vh" }}>
-                {swipes.swipeLikes + swipes.swipePasses}
-              </div>
-              <div ref={item => { pie = item }} style={{"width":"90%"}}>
-                <PieChart swipeLikes={swipes.swipeLikes} swipePasses={swipes.swipePasses} />
+                style={{ "color": "#FFFFFF", "paddingBottom":"3vh"}}>
+                {matches}
               </div>
             </div>
           </animated.div>
         </div>
-        <Next next={"matches"} data={props.update} animateOut={animateOut}/>
+          <Next next={"matches"} data={props.update}/>
       </div>
     );
   } else return null;
 }
 
-export default TotalSwipes;
+export default TotalMatches;
