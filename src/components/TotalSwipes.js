@@ -60,18 +60,19 @@ function TotalSwipes(props) {
           <animated.div
             onMouseMove={({ clientX: x, clientY: y }) => setP({ xys: calc(x, y) })}
             onMouseLeave={() => setP({ xys: [0, 0, 1] })}
-            style={{ transform: p.xys.interpolate(trans) }}>
+            style={{ transform: p.xys.interpolate(trans), "height":"100%" }}>
             <div className="total-content">
               <div className="total-text"
-                ref={item => { line1 = item }}>
+                ref={item => { line1 = item }}
+                style={{color:"#CB1581"}}>
                 Total number of swipes:
               </div>
               <div className="total-text"
                 ref={item => { line2 = item }}
-                style={{ "color": "black", "paddingBottom": "1vh" }}>
+                style={{ "color": "black" }}>
                 {swipes.swipeLikes + swipes.swipePasses}
               </div>
-              <div ref={item => { pie = item }} style={{"width":"90%"}}>
+              <div ref={item => { pie = item }} className="graph">
                 <PieChart swipeLikes={swipes.swipeLikes} swipePasses={swipes.swipePasses} />
               </div>
             </div>

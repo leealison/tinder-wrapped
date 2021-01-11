@@ -54,7 +54,7 @@ function PieChart(props) {
                 fontColor: "#CB1581"
               }
             },
-
+            responsive: true,
           }}
         />
       </div>
