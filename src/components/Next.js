@@ -8,6 +8,10 @@ function Next(props) {
       props.animateOut();
       props.data("matches", false);
       props.data("matchPercent", true);
+    } else if (props.next === "app opens") {
+      props.animateOut();
+      props.data("matchPercent", false);
+      props.data("appOpens", true);
     }
   }
 

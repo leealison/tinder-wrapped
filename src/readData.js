@@ -55,7 +55,6 @@ function getVals(array) {
 }
 
 function getMatchPercent(data) {
-  console.log(data);
   const matchesNum = getTotalMatches(data);
   const swipes = getTotalSwipes(data);
   return ((matchesNum / (swipes["swipeLikes"])).toFixed(2)) * 100;

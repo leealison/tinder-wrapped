@@ -4,6 +4,7 @@ import TitleCard from "./components/TitleCard.js";
 import TotalSwipes from "./components/TotalSwipes.js";
 import TotalMatches from "./components/TotalMatches.js";
 import MatchPercent from "./components/MatchPercent.js";
+import AppOpens from "./components/AppOpens.js";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [totalSwipes, setTotalSwipes] = useState(false);
   const [matches, setMatches] = useState(false);
   const [matchPercent, setMatchPercent] = useState(false);
+  const [appOpens, setAppOpens] = useState(false)
   const update = (state, val) => {
     if (state === "title") setTitle(val);
     else if (state === "json") {
@@ -21,6 +23,7 @@ function App() {
     else if (state === "totalSwipes") setTotalSwipes(val);
     else if (state === "matches") setMatches(val);
     else if (state === "matchPercent") setMatchPercent(val);
+    else if (state === "appOpens") setAppOpens(val);
   }
 
   return (
@@ -52,6 +55,13 @@ function App() {
         unmountOnExit
         in={matchPercent}>
         <MatchPercent data={json} update={update} />
+      </Transition>
+      <Transition
+        timeout={1000}
+        mountOnEnter
+        unmountOnExit
+        in={appOpens}>
+        <AppOpens data={json} update={update} />
       </Transition>
     </div>
   );

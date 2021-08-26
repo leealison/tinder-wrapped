@@ -53,6 +53,17 @@ function MatchPercent(props) {
     config: { mass: 1, tension: 20, friction: 30 }
   }));
 
+  const animateOut = () => {
+    TweenMax.to([line1, line2, line3], .8, {
+      y: -30,
+      opacity: 0,
+      ease: Power3.easeOut,
+      stagger: {
+        amount: .15
+      }
+    });
+  }
+
   return (
     <div>
       <div className="transition-3">
@@ -66,7 +77,7 @@ function MatchPercent(props) {
               style={{ "color": "#4101F5" }}>
               Of all the people you swiped right on,
             </div>
-            <div ref={item => { line2 = item }} style={{"opacity":"0"}}>
+            <div ref={item => { line2 = item }} style={{"opacity":"0", "color":"#f538ef", "fontSize":"6em"}} className="total-text">
               <Odometer value={odometerVal} duration={500} format={"(.ddd).dd"} />
             </div>
             <div className="total-text"
@@ -77,7 +88,7 @@ function MatchPercent(props) {
           </div>
         </animated.div>
       </div>
-      <Next />
+      <Next next={"app opens"} animateOut={animateOut} data={props.update}/>
     </div>
   );
 
