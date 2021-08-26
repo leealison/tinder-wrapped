@@ -88,7 +88,7 @@ button:hover {
 
 .graph {
   position: relative;
-  margin-top: 40px;
+  margin-top: 4vh;
   width: 50vw;
 }
 
@@ -205,7 +205,7 @@ button:hover {
   100%{background-color: #CB1582}
 }
 
-/* Bars */
+/* BarChart */
 .bar-container {
   width: 100%;
   background-color: white;
@@ -223,4 +223,20 @@ button:hover {
   float: left;
   margin-top: 15vh;
   margin-right: 5vw;
+}
+
+/* MatchPercent */
+.transition-3 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  animation: color-animation-3 linear 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes color-animation-3 {
+  0%{background-color: #CB1582}
+  100%{background-color: #CCF565}
 }

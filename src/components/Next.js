@@ -4,6 +4,10 @@ function Next(props) {
       props.animateOut();
       props.data("totalSwipes", false);
       props.data("matches", true);
+    } else if (props.next === "match percent") {
+      props.animateOut();
+      props.data("matches", false);
+      props.data("matchPercent", true);
     }
   }
 

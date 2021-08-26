@@ -13,7 +13,6 @@ function TotalSwipes(props) {
 
   useEffect(() => {
     if (show) {
-      document.body.style.background = "#A5FFEF";
       TweenMax.to([line1, line2], .8, {
         delay: .8,
         y: 64,
@@ -64,15 +63,15 @@ function TotalSwipes(props) {
             <div className="total-content">
               <div className="total-text"
                 ref={item => { line1 = item }}
-                style={{color:"#CB1581"}}>
+                style={{color:"#CB1581", textAlign:"center"}}>
                 Total number of swipes:
               </div>
               <div className="total-text"
                 ref={item => { line2 = item }}
-                style={{ "color": "black" }}>
+                style={{ "color": "black", paddingLeft:"5vw" }}>
                 {swipes.swipeLikes + swipes.swipePasses}
               </div>
-              <div ref={item => { pie = item }} className="graph">
+              <div ref={item => { pie = item }} className="graph" style={{left:"10%"}}>
                 <PieChart swipeLikes={swipes.swipeLikes} swipePasses={swipes.swipePasses} />
               </div>
             </div>

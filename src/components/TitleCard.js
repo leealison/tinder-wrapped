@@ -38,7 +38,7 @@ function TitleCard(props) {
   useEffect(() => {
     TweenMax.to(
       content,
-      3.5,
+      2.5,
       { opacity: 1, y: -20 }
     );
   }, []);
@@ -52,7 +52,7 @@ function TitleCard(props) {
         <div className="card">
           <div className="card-title">Tinder Wrapped</div>
           <div className="card-text" style={{ "paddingTop": "10vh", "marginBottom": "-5vh" }}>
-            Here are your Tinder highlights blah blah blah
+            Here are your Tinder highlights!
           </div>
           <div className="button-container">
             <input id="fileButton" type="file" hidden />
@@ -63,7 +63,7 @@ function TitleCard(props) {
             "marginTop": "-11vh",
             "lineHeight": "2.3vh",
           }}>
-            Select data.json in the myData folder.
+            <div style={{"marginTop":"-15px"}}>Select data.json in the myData folder.</div>
           </div>
         </div>
       </animated.div>

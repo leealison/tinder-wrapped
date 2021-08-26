@@ -27,7 +27,7 @@ function getTotalMatches(data) {
 function getDaysWithMostMatches(data) {
   const matches = data["matches"];
   const keys = Object.keys(matches);
-  keys.sort(function(a, b) { return matches[a] - matches[b] });
+  keys.sort(function (a, b) { return matches[a] - matches[b] });
   let top5 = [];
   for (let i = keys.length - 1; i > keys.length - 6; i--) {
     const key = keys[i];
@@ -54,4 +54,18 @@ function getVals(array) {
   return output;
 }
 
-export { getTotalSwipes, getTotalMatches, getDaysWithMostMatches, getKeys, getVals }
+function getMatchPercent(data) {
+  console.log(data);
+  const matchesNum = getTotalMatches(data);
+  const swipes = getTotalSwipes(data);
+  return ((matchesNum / (swipes["swipeLikes"])).toFixed(2)) * 100;
+}
+
+export {
+  getTotalSwipes,
+  getTotalMatches,
+  getDaysWithMostMatches,
+  getKeys,
+  getVals,
+  getMatchPercent
+}

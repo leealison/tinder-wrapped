@@ -3,6 +3,7 @@ import { Transition } from "react-transition-group";
 import TitleCard from "./components/TitleCard.js";
 import TotalSwipes from "./components/TotalSwipes.js";
 import TotalMatches from "./components/TotalMatches.js";
+import MatchPercent from "./components/MatchPercent.js";
 import "./App.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [json, setJson] = useState("");
   const [totalSwipes, setTotalSwipes] = useState(false);
   const [matches, setMatches] = useState(false);
+  const [matchPercent, setMatchPercent] = useState(false);
   const update = (state, val) => {
     if (state === "title") setTitle(val);
     else if (state === "json") {
@@ -18,6 +20,7 @@ function App() {
     }
     else if (state === "totalSwipes") setTotalSwipes(val);
     else if (state === "matches") setMatches(val);
+    else if (state === "matchPercent") setMatchPercent(val);
   }
 
   return (
@@ -34,14 +37,21 @@ function App() {
         mountOnEnter
         unmountOnExit
         in={totalSwipes}>
-        <TotalSwipes data={json} update={update}/>
+        <TotalSwipes data={json} update={update} />
       </Transition>
       <Transition
         timeout={1000}
         mountOnEnter
         unmountOnExit
         in={matches}>
-        <TotalMatches data={json} update={update}/>
+        <TotalMatches data={json} update={update} />
+      </Transition>
+      <Transition
+        timeout={1000}
+        mountOnEnter
+        unmountOnExit
+        in={matchPercent}>
+        <MatchPercent data={json} update={update} />
       </Transition>
     </div>
   );

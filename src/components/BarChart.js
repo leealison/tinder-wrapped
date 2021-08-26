@@ -3,7 +3,7 @@ import { getKeys, getVals } from "../readData.js";
 import { useState, useEffect, useRef } from "react";
 import { TweenMax, Power3 } from "gsap";
 
-function Bars(props) {
+function BarChart(props) {
   const dates = getKeys(props.data);
   const matchesNum = getVals(props.data);
 
@@ -74,4 +74,4 @@ function Bars(props) {
 
 }
 
-export default Bars;
+export default BarChart;
