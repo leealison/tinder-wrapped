@@ -64,33 +64,35 @@ function MatchPercent(props) {
     });
   }
 
-  return (
-    <div>
-      <div className="transition-3">
-        <animated.div
-          onMouseMove={({ clientX: x, clientY: y }) => setP({ xys: calc(x, y) })}
-          onMouseLeave={() => setP({ xys: [0, 0, 1] })}
-          style={{ transform: p.xys.interpolate(trans) }}>
-          <div className="total-content">
-            <div className="total-text"
-              ref={item => { line1 = item }}
-              style={{ "color": "#4101F5" }}>
-              Of all the people you swiped right on,
+  if (show) {
+    return (
+      <div>
+        <div className="transition-3">
+          <animated.div
+            onMouseMove={({ clientX: x, clientY: y }) => setP({ xys: calc(x, y) })}
+            onMouseLeave={() => setP({ xys: [0, 0, 1] })}
+            style={{ transform: p.xys.interpolate(trans) }}>
+            <div className="total-content">
+              <div className="total-text"
+                ref={item => { line1 = item }}
+                style={{ "color": "#4101F5" }}>
+                Of all the people you swiped right on,
+              </div>
+              <div ref={item => { line2 = item }} style={{ "opacity": "0", "color": "#f538ef", "fontSize": "6em" }} className="total-text">
+                <Odometer value={odometerVal} duration={500} format={"(.ddd).dd"} />
+              </div>
+              <div className="total-text"
+                ref={item => { line3 = item }}
+                style={{ "color": "#4101F5" }}>
+                percent swiped right too.
+              </div>
             </div>
-            <div ref={item => { line2 = item }} style={{"opacity":"0", "color":"#f538ef", "fontSize":"6em"}} className="total-text">
-              <Odometer value={odometerVal} duration={500} format={"(.ddd).dd"} />
-            </div>
-            <div className="total-text"
-              ref={item => { line3 = item }}
-              style={{ "color": "#4101F5" }}>
-              percent swiped right too.
-            </div>
-          </div>
-        </animated.div>
+          </animated.div>
+        </div>
+        <Next next={"app opens"} animateOut={animateOut} data={props.update} />
       </div>
-      <Next next={"app opens"} animateOut={animateOut} data={props.update}/>
-    </div>
-  );
+    );
+  } else return null;
 
 }
 

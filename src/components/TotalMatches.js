@@ -44,7 +44,7 @@ function TotalMatches(props) {
   }));
 
   const animateOut = () => {
-    TweenMax.to([line1, line2, line3, bar], .8, {
+    TweenMax.to([line1, line2, line3, bar], 1, {
       y: -30,
       opacity: 0,
       ease: Power3.easeOut,

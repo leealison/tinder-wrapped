@@ -12,6 +12,10 @@ function Next(props) {
       props.animateOut();
       props.data("matchPercent", false);
       props.data("appOpens", true);
+    } else if (props.next === "messages received") {
+      props.animateOut();
+      props.data("appOpens", false);
+      //props.data("appOpens", true);
     }
   }
 

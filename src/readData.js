@@ -60,11 +60,40 @@ function getMatchPercent(data) {
   return ((matchesNum / (swipes["swipeLikes"])).toFixed(2)) * 100;
 }
 
+function getTop3AppOpens(data) {
+  const appOpens = data["app_opens"]
+  let sortable = [];
+  Object.keys(appOpens).forEach((key, _) => {
+    sortable.push([key, appOpens[key]])
+  });
+
+  sortable.sort(function (a, b) {
+    return a[1] - b[1];
+  });
+
+  const len = sortable.length;
+  const top3 = [sortable[len-1], sortable[len-2], sortable[len-3]];
+  return top3;
+}
+
+function getAppOpenAverage(data) {
+  const appOpens = data["app_opens"]
+  let sum = 0;
+  let len = 0;
+  Object.keys(appOpens).forEach((key, _) => {
+    sum += appOpens[key]
+    len++;
+  });
+  return (sum / len).toFixed(2);
+}
+
 export {
   getTotalSwipes,
   getTotalMatches,
   getDaysWithMostMatches,
   getKeys,
   getVals,
-  getMatchPercent
+  getMatchPercent,
+  getTop3AppOpens,
+  getAppOpenAverage
 }

@@ -240,3 +240,19 @@ button:hover {
   0%{background-color: #CB1582}
   100%{background-color: #CCF565}
 }
+
+/* AppOpens */
+.transition-4 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  animation: color-animation-4 linear 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes color-animation-4 {
+  0%{background-color: #CCF565}
+  100%{background-color: #4101F6}
+}
